@@ -40,7 +40,7 @@ def generate_launch_description():
         executable="create",
         name="my_robot_spawn",
         arguments=[
-            "-name", "my_robot",
+            "-name", "diffrobot",
             "-allow_renaming", "true",
             "-topic", "robot_description",
             "-x", LaunchConfiguration("x"),
