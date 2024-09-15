@@ -86,8 +86,6 @@
     </joint>
 
 
-
-
     <joint name="wheel_right_joint" type="continuous">
         <origin xyz="0.0 -0.15 0.0" rpy="0.0 1.5705 1.5705"/>
         <parent link="base_link"/>
@@ -100,7 +98,7 @@
     <link name="front_caster">
         <inertial>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
+            <mass value="0.2"/>
             <inertia ixx="0.002526666666667" ixy="0" ixz="0" iyy="0.002526666666667" iyz="0" izz="0.005"/>
         </inertial>
         <visual name="front_caster_visual">
@@ -126,30 +124,35 @@
         <parent link="base_link"/>
         <child link="front_caster"/>
         <axis xyz="0.0 0.0 0.0"/>
+
+
     </joint>
 
- <link name="back_caster">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.002526666666667" ixy="0" ixz="0" iyy="0.002526666666667" iyz="0" izz="0.005"/>
-        </inertial>
-        <visual name="back_caster_visual">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <sphere radius="0.0499"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 1.0 1.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <sphere radius="0.0499"/>
-            </geometry>
-        </collision>
+    <gazebo reference="front_caster_joint">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+    <link name="back_caster">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.2"/>
+                <inertia ixx="0.002526666666667" ixy="0" ixz="0" iyy="0.002526666666667" iyz="0" izz="0.005"/>
+            </inertial>
+            <visual name="back_caster_visual">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.0499"/>
+                </geometry>
+                <material name="">
+                    <color rgba="1.0 1.0 1.0 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.0499"/>
+                </geometry>
+            </collision>
     </link>
 
     <joint name="back_caster_joint" type="fixed">
@@ -157,7 +160,13 @@
         <parent link="base_link"/>
         <child link="back_caster"/>
         <axis xyz="0.0 0.0 0.0"/>
+
+
+
     </joint>
+    <gazebo reference="back_caster_joint">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
 
     <link name="lidar_link">
         <inertial>
@@ -233,5 +242,118 @@
         <parent link="base_link"/>
         <child link="imu_link"/>
     </joint>
+
+
+
+
+
+<!-- Materials and friction -->
+
+<gazebo reference="base_link">
+    <visual>
+        <material> <!-- Blue -->
+            <ambient>0.0 0.0 1.0 1.0</ambient>
+            <diffuse>0.0 0.0 1.0 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+    </visual>
+    
+</gazebo>
+
+<gazebo reference="right_wheel">
+    <visual>
+        <material> <!-- Gray -->
+            <ambient>0.25 0.25 0.25 1.0</ambient>
+            <diffuse>0.25 0.25 0.25 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+    </visual>
+    <collision>
+        <surface>
+            <friction>
+                <ode>
+                    <mu>0.0</mu>
+                    <mu2>0.0</mu2>
+                </ode>
+            </friction>
+        </surface>
+    </collision>
+</gazebo>
+<gazebo reference="left_wheel">
+    <visual>
+        <material> <!-- Black -->
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+    </visual>
+    <collision>
+        <surface>
+            <friction>
+                <ode>
+                    <mu>0.0</mu>
+                    <mu2>0.0</mu2>
+                </ode>
+            </friction>
+        </surface>
+    </collision>
+</gazebo>
+<gazebo reference="front_caster">
+    <visual>
+        <material> <!-- Black -->
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+    </visual>
+    <collision>
+        <surface>
+            <friction>
+                <ode>
+                    <mu>1.0</mu>
+                    <mu2>1.0</mu2>
+                </ode>
+            </friction>
+        </surface>
+    </collision>
+</gazebo>
+
+<gazebo reference="back_caster">
+    <visual>
+        <material> <!-- Black -->
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+    </visual>
+    <collision>
+        <surface>
+            <friction>
+                <ode>
+                    <mu>1.0</mu>
+                    <mu2>1.0</mu2>
+                </ode>
+            </friction>
+        </surface>
+    </collision>
+</gazebo>
+
+<gazebo reference="lidar_link">
+    <visual>
+        <material> <!-- Black -->
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+    </visual>
+</gazebo>
+
+
 
 </robot>
