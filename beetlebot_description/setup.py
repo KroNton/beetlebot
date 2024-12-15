@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'diffbotsim_description'
+package_name = 'beetlebot_description'
 
 setup(
     name=package_name,
