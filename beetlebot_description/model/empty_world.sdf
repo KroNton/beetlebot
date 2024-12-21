@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <sdf version="1.10">
     <world name="beetlebot_world">
+
+    
         <physics name="1ms" type="ignored">
             <max_step_size>0.001</max_step_size>
             <real_time_factor>1.0</real_time_factor>
@@ -13,10 +15,29 @@
             filename="gz-sim-user-commands-system"
             name="gz::sim::systems::UserCommands">
         </plugin>
+
         <plugin
             filename="gz-sim-scene-broadcaster-system"
             name="gz::sim::systems::SceneBroadcaster">
         </plugin>
+
+
+    <!-- add robot sensors plugins to the world -->
+
+        <!-- add imu plugin to the world -->
+        <plugin filename="gz-sim-imu-system"
+            name="gz::sim::systems::Imu">
+        </plugin>
+
+         <!-- add lidar plugin to the world -->
+        <plugin
+            filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors">
+            <render_engine>ogre2</render_engine>
+        </plugin>
+
+
+    <!--  movment plugins to control robot using gzsim teleop with keyboard (No ROS) -->
 
         <!-- Moving Forward-->
         <plugin filename="gz-sim-triggered-publisher-system"
