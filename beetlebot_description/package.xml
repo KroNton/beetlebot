@@ -11,6 +11,7 @@
   <depend>sdf</depend>
   <depend>urdf</depend>
   <depend>xacro</depend>
+  <exec_depend>gz-sim</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

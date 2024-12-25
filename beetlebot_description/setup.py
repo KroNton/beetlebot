@@ -1,3 +1,4 @@
+
 from setuptools import find_packages, setup
 
 package_name = 'beetlebot_description'
@@ -10,6 +11,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/models', ['models/beetlebot/model.sdf', 'models/beetlebot/model.config']), # Add model files path 
     ],
     install_requires=['setuptools'],
     zip_safe=True,
