@@ -37,7 +37,29 @@
         </plugin>
 
 
-    <!--  movment plugins to control robot using gzsim teleop with keyboard (No ROS) -->
+        <light type="directional" name="sun">
+            <cast_shadows>true</cast_shadows>
+            <pose>0 0 10 0 0 0</pose>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+            <attenuation>
+                <range>1000</range>
+                <constant>0.9</constant>
+                <linear>0.01</linear>
+                <quadratic>0.001</quadratic>
+            </attenuation>
+            <direction>-0.5 0.1 -0.9</direction>
+        </light>
+
+            <!-- Include a ground plane -->
+        <include>
+             <uri>file://sub_models/ground_plane.sdf</uri>
+        </include>
+
+
+
+
+        <!--  movment plugins to control robot using gzsim teleop with keyboard (No ROS) -->
 
         <!-- Moving Forward-->
         <plugin filename="gz-sim-triggered-publisher-system"
@@ -94,31 +116,18 @@
             </output>
         </plugin>
 
-        <light type="directional" name="sun">
-            <cast_shadows>true</cast_shadows>
-            <pose>0 0 10 0 0 0</pose>
-            <diffuse>0.8 0.8 0.8 1</diffuse>
-            <specular>0.2 0.2 0.2 1</specular>
-            <attenuation>
-                <range>1000</range>
-                <constant>0.9</constant>
-                <linear>0.01</linear>
-                <quadratic>0.001</quadratic>
-            </attenuation>
-            <direction>-0.5 0.1 -0.9</direction>
-        </light>
+        <!-- Include a "beetlebot" robot inside beetlebot_1 model as nested model  -->
 
-            <!-- Include a ground plane -->
-        <include>
-             <uri>file://sub_models/ground_plane.sdf</uri>
-        </include>
+        <model name="beetlebot_1">
 
-            <!-- Include a beetlebot robot -->
-        <include>
-             <uri>file://sub_models/beetlebot_robot.sdf</uri>
-             <pose relative_to="world">5 0 0 0 0 0</pose>
-             <!-- <pose>5 5 0 0 0 0</pose> -->
-        </include>
+            <self_collide>true</self_collide>
+            <pose>1 1 0.35 0 0 0</pose>
+            <include>
+                <uri>file://beetlebot/model.sdf</uri>
+            </include>
+
+        </model>
+
 
         <include>
             <uri>
