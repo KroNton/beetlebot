@@ -8,7 +8,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.5</radius>
+                            <radius>0.3</radius>
                             <length>0.1</length>
                         </cylinder>
                     </geometry>
@@ -23,7 +23,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.5</radius>
+                            <radius>0.3</radius>
                             <length>0.1</length>
                         </cylinder>
                     </geometry>
@@ -43,12 +43,12 @@
 
             <!-- right wheel link -->
             <link name="wheel_right">
-                <pose relative_to='base_link'>0 0.53 -0.05 1.5707963267948963 0 0</pose>
+                <pose relative_to='base_link'>0 0.33 -0.05 1.5707963267948963 0 0</pose>
                 <visual name='wheel_right visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.2</radius>
+                            <radius>0.15</radius>
                             <length>0.07</length>
                         </cylinder>
                     </geometry>
@@ -63,7 +63,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.2</radius>
+                            <radius>0.15</radius>
                             <length>0.07</length>
                         </cylinder>
                     </geometry>
@@ -98,12 +98,12 @@
 
             <!-- left wheel link -->
             <link name="wheel_left">
-                <pose relative_to='base_link'>0 -0.53 -0.05 1.5707963267948963 0 0</pose>
+                <pose relative_to='base_link'>0 -0.33 -0.05 1.5707963267948963 0 0</pose>
                 <visual name='wheel_left visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.2</radius>
+                            <radius>0.15</radius>
                             <length>0.07</length>
                         </cylinder>
                     </geometry>
@@ -118,7 +118,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.2</radius>
+                            <radius>0.15</radius>
                             <length>0.07</length>
                         </cylinder>
                     </geometry>
@@ -161,7 +161,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.5</radius>
+                            <radius>0.3</radius>
                             <length>0.1</length>
                         </cylinder>
                     </geometry>
@@ -178,7 +178,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.5</radius>
+                            <radius>0.3</radius>
                             <length>0.1</length>
                         </cylinder>
                     </geometry>
@@ -209,14 +209,14 @@
             <!-- front_caster link -->
             <link name="front_caster">
                 <!-- Pose relative to base_link -->
-                <pose relative_to='base_link'>0.32 0 -0.115 0 0 0</pose>
+                <pose relative_to='base_link'>0.2 0 -0.1 0 0 0</pose>
 
                 <!-- Visual representation of front_caster -->
                 <visual name='front_caster visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <sphere>
-                            <radius>0.13</radius>
+                            <radius>0.1</radius>
                         </sphere>
                     </geometry>
                     <material>
@@ -232,7 +232,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <sphere>
-                            <radius>0.13</radius>
+                            <radius>0.1</radius>
                         </sphere>
                     </geometry>
                 </collision>
@@ -262,14 +262,14 @@
             <!-- rear_caster link -->
             <link name="rear_caster">
                 <!-- Pose relative to base_link -->
-                <pose relative_to='base_link'>-0.32 0 -0.115 0 0 0</pose>
+                <pose relative_to='base_link'>-0.2 0 -0.1 0 0 0</pose>
 
                 <!-- Visual representation of rear_caster -->
                 <visual name='rear_caster visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <sphere>
-                            <radius>0.13</radius>
+                            <radius>0.1</radius>
                         </sphere>
                     </geometry>
                     <material>
@@ -285,7 +285,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <sphere>
-                            <radius>0.13</radius>
+                            <radius>0.1</radius>
                         </sphere>
                     </geometry>
                 </collision>
@@ -315,7 +315,7 @@
             <!-- right_bar link -->
             <link name="right_bar">
                 <!-- Pose relative to base_link -->
-                <pose relative_to='base_link'>0 0.4 0.2058808723746403 0 0 0</pose>
+                <pose relative_to='base_link'>0 0.2 0.2058808723746403 0 0 0</pose>
 
                 <!-- Visual representation of right_bar -->
                 <visual name='right_bar visual'>
@@ -372,7 +372,7 @@
 
             <link name="left_bar">
                 <!-- Pose relative to base_link -->
-                <pose relative_to='base_link'>0 -0.4 0.2058808723746403 0 0 0</pose>
+                <pose relative_to='base_link'>0 -0.2 0.2058808723746403 0 0 0</pose>
 
                 <!-- Visual representation of left_bar -->
                 <visual name='left_bar visual'>
@@ -426,13 +426,10 @@
                 <child>left_bar</child>
             </joint>
 
-
-
-
             <!-- rear_bar link -->
             <link name="rear_bar">
                 <!-- Pose relative to base_link -->
-                <pose relative_to='base_link'>-0.4 0 0.2058808723746403 0 0 0</pose>
+                <pose relative_to='base_link'>-0.2 0 0.2058808723746403 0 0 0</pose>
 
                 <!-- Visual representation of rear_bar -->
                 <visual name='rear_bar visual'>
@@ -484,9 +481,7 @@
                 <child>rear_bar</child>
             </joint>
 
-            <frame name="lidar_frame" attached_to='lidar'>
-                <pose>0.8 0 0.5 0 0 0</pose>
-            </frame>    
+
 
             <link name="lidar">
                 <pose relative_to='base_link'>0 0 0.57 0 0 0</pose>
@@ -495,7 +490,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.2</radius>
+                            <radius>0.1</radius>
                             <length>0.13538975482266932</length>
                         </cylinder>
                     </geometry>
@@ -510,7 +505,7 @@
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
                         <cylinder>
-                            <radius>0.2</radius>
+                            <radius>0.1</radius>
                             <length>0.13538975482266932</length>
                         </cylinder>
                     </geometry>
@@ -526,8 +521,10 @@
                         <izz>0.3333333333333333</izz>
                     </inertia>
                 </inertial>
-                <sensor name='gpu_lidar' type='gpu_lidar'>"
-                    <pose relative_to='lidar_frame'>0 0 0 0 0 0</pose>
+                <sensor name='rp_lidar' type='gpu_lidar'>"
+                    <pose relative_to='lidar'>0 0 0 0 0 0</pose>
+                    <always_on>1</always_on>
+                    <visualize>true</visualize>
                     <topic>lidar</topic>
                     <update_rate>10</update_rate>
                     <ray>
@@ -535,8 +532,8 @@
                             <horizontal>
                                 <samples>640</samples>
                                 <resolution>1</resolution>
-                                <min_angle>-1.396263</min_angle>
-                                <max_angle>1.396263</max_angle>
+                                <min_angle>-6.28319</min_angle>
+                                <max_angle>6.28319</max_angle>
                             </horizontal>
                             <vertical>
                                 <samples>1</samples>
@@ -551,8 +548,6 @@
                             <resolution>0.01</resolution>
                         </range>
                     </ray>
-                    <always_on>1</always_on>
-                    <visualize>true</visualize>
                 </sensor>
             </link>
 
@@ -580,7 +575,7 @@
                     <min_angular_velocity>-1</min_angular_velocity>
                     <topic>cmd_vel</topic>
             </plugin>
-
+ 
         </model>
 
     </sdf>
