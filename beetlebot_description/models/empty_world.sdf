@@ -1,5 +1,8 @@
 <?xml version="1.0" ?>
 <sdf version="1.10">
+
+
+
     <world name="beetlebot_world">
 
     
@@ -7,10 +10,12 @@
             <max_step_size>0.001</max_step_size>
             <real_time_factor>1.0</real_time_factor>
         </physics>
+
         <plugin
             filename="gz-sim-physics-system"
             name="gz::sim::systems::Physics">
         </plugin>
+
         <plugin
             filename="gz-sim-user-commands-system"
             name="gz::sim::systems::UserCommands">
@@ -21,6 +26,14 @@
             name="gz::sim::systems::SceneBroadcaster">
         </plugin>
 
+
+
+    <!-- define custom gui plugins to the world --> 
+
+    <!-- <gui fullscreen="0">
+      <plugin filename="VisualizeLidar" name="Visualize Lidar">
+      </plugin>
+    </gui> -->
 
     <!-- add robot sensors plugins to the world -->
 
@@ -55,8 +68,6 @@
         <include>
              <uri>file://sub_models/ground_plane.sdf</uri>
         </include>
-
-
 
 
         <!--  movment plugins to control robot using gzsim teleop with keyboard (No ROS) -->
@@ -127,6 +138,15 @@
             </include>
 
         </model>
+
+        <!-- <model name="beetlebot_2">
+
+            <self_collide>true</self_collide>
+            <pose>3 3 0.35 0 0 0</pose>
+            <include>
+                <uri>file://beetlebot/model.sdf</uri>
+            </include>
+        </model> -->
 
 
         <include>
