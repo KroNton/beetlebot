@@ -2,6 +2,9 @@
 
 This repository contains the **Beetlebot** robot description and its configurations, designed for seamless integration into any custom Gazebo world with custom GUI configurations.
 
+
+![alt text](imgs/sdf_model.png)
+
 ## Repository Structure
 
 ```
@@ -116,10 +119,22 @@ Ensure you have the following:
 2. Customize the sensors or other components by editing the relevant `.sdf` files in the `sub_models/` directory.
 3. Update the `world_gui.config` file to define your preferred GUI layout.
 4. Launch the simulation in Gazebo:
+
    ```bash
    gz sim <your_world_name>.sdf --gui-config world_gui.config
    ```
+   - use `warehouse_world.sdf` :
+  
+      ```bash
+      gz sim warehouse_world.sdf --gui-config world_gui.config 
+      ```  
+### Controlling the Robot
 
+- Use the keyboard arrow keys to move the robot.
+
+- Press `k` to stop the robot.
+
+![alt text](imgs/robot_warehouse.gif)
 
 ## Future Enhancements
 
@@ -130,7 +145,7 @@ Ensure you have the following:
 - Improve the modularity of sub-models.
     - include sensors as sub-models in robot main .sdf
     - prepare separate pkg for gazebo worlds and config files `beetlebot_gazebo`
-  - 
+  
 - complete the `URDF format` for beetlebot .
 
 ---
