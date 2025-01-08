@@ -1,0 +1,77 @@
+ <?xml version="1.0" ?>
+<sdf version="1.10">
+    <model name="camera_sensor_model">  
+
+        <link name="camera">
+            <pose relative_to='base_link'>0.5 0 0.3493732528248447 0 0 0</pose>
+            <visual name='camera visual'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <box>
+                        <size>0.1 0.4 0.1</size>
+                    </box>
+                </geometry>
+                <material>
+                    <ambient>0.015996293361446288 0.22696587349938613 0.07036009568874305 1</ambient>
+                    <diffuse>0.015996293361446288 0.22696587349938613 0.07036009568874305 1</diffuse>
+                    <specular>0.1 0.1 0.1 1</specular>
+                    <emissive>0 0 0 1</emissive>
+                </material>
+            </visual>
+            <collision name='camera collision'>
+                <pose>0.3 0 0 0.2 0 0</pose>
+                <geometry>
+                    <box>
+                        <size>0.1 0.4 0.1</size>
+                    </box>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass>1</mass>
+                <inertia>
+                    <ixx>0.16666666666666666</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.16666666666666666</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.16666666666666666</izz>
+                </inertia>
+            </inertial>
+            <sensor name="camera" type="camera">
+                <always_on>true</always_on>
+                <visualize>true</visualize>
+                <update_rate>30</update_rate>
+                <topic>camera/image_raw</topic>
+                <gz_frame_id>camera_rgb_frame</gz_frame_id>
+                <camera name="intel_realsense_r200">
+                <camera_info_topic>camera/camera_info</camera_info_topic>
+                <horizontal_fov>1.02974</horizontal_fov>
+                <image>
+                    <width>1920</width>
+                    <height>1080</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.02</near>
+                    <far>300</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise is sampled independently per pixel on each frame.
+                        That pixel's noise value is added to each of its color
+                        channels, which at that point lie in the range [0,1]. -->
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+                </camera>
+        </sensor>
+        </link>
+        <!-- <joint name="base_link_to_camera" type="fixed">
+            <pose relative_to='camera'>0.5 0 0.2 0 0 0</pose>
+            <parent>base_link</parent>
+            <child>camera</child>
+        </joint> -->
+
+    </model>
+
+</sdf>
