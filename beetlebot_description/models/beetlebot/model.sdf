@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.10">
         <model name="beetlebot" canonical_link='base_link'>
-            <pose >1 1 1 0 0 0</pose>
+
             <link name="base_link">
                 <pose relative_to='__model__'>0 0 0.3 0 0 0</pose>
                 <visual name='base_link visual'>
@@ -83,14 +83,13 @@
 
             <!-- right wheel joint -->
             <joint name="base_link_to_wheel_right" type="revolute">
-                <pose relative_to='wheel_right'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>wheel_right</child>
                 <axis>
-                    <xyz expressed_in='__model__'>0 1 0</xyz> <!--can be defined as any frame or even arbitrary frames-->
+                    <xyz>0 1 0</xyz><!--can be defined as any frame or even arbitrary frames-->
                     <limit>
-                        <lower>-1.79769e+308</lower>    <!--negative infinity-->
-                        <upper>1.79769e+308</upper>     <!--positive infinity-->
+                        <lower>-1.79769e+308</lower>
+                        <upper>1.79769e+308</upper>
                     </limit>
                 </axis>
             </joint>    
@@ -138,11 +137,10 @@
 
             <!-- left wheel joint -->
             <joint name="base_link_to_wheel_left" type="revolute">
-                <pose relative_to='wheel_left'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>wheel_left</child>
                 <axis>
-                    <xyz expressed_in='__model__'>0 1 0</xyz> <!--can be defined as any frame or even arbitrary frames-->
+                    <xyz>0 1 0</xyz> <!--can be defined as any frame or even arbitrary frames-->
                     <limit>
                         <lower>-1.79769e+308</lower>    <!--negative infinity-->
                         <upper>1.79769e+308</upper>     <!--positive infinity-->
@@ -200,8 +198,6 @@
 
             <!-- top_base joint -->
             <joint name="base_link_to_top_base" type="fixed">
-                <!-- Pose relative to top_base -->
-                <pose relative_to='top_base'>0 0 0.45 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>top_base</child>
             </joint>
@@ -253,8 +249,6 @@
 
             <!-- front_caster joint -->
             <joint name="base_link_to_front_caster" type="ball">
-                <!-- Pose relative to front_caster -->
-                <pose relative_to='front_caster'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>front_caster</child>
             </joint>
@@ -306,8 +300,6 @@
 
             <!-- rear_caster joint -->
             <joint name="base_link_to_rear_caster" type="ball">
-                <!-- Pose relative to rear_caster -->
-                <pose relative_to='rear_caster'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>rear_caster</child>
             </joint>
@@ -362,8 +354,6 @@
 
             <!-- right_bar joint -->
             <joint name="base_link_to_right_bar" type="fixed">
-                <!-- Pose relative to right_bar -->
-                <pose relative_to='right_bar'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>right_bar</child>
             </joint>
@@ -420,8 +410,6 @@
             <!-- left_bar joint -->
 
             <joint name="base_link_to_left_bar" type="fixed">
-                <!-- Pose relative to left_bar -->
-                <pose relative_to='left_bar'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>left_bar</child>
             </joint>
@@ -475,8 +463,6 @@
 
             <!-- rear_bar joint -->
             <joint name="base_link_to_rear_bar" type="fixed">
-                <!-- Pose relative to rear_bar -->
-                <pose relative_to='rear_bar'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>rear_bar</child>
             </joint>
@@ -552,7 +538,6 @@
             </link>
 
             <joint name="base_link_to_lidar" type="fixed">
-                <pose relative_to='lidar'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>lidar</child>
             </joint>            

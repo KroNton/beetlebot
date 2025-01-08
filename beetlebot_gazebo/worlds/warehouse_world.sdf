@@ -462,15 +462,6 @@
       <pose>2.75268 1.0014 0.132279 0 0 0</pose>
     </include>
 
-    <model name="beetlebot_1">
-
-        <self_collide>true</self_collide>
-        <pose>1 1 0.35 0 0 0</pose>
-        <include>
-            <uri>file://beetlebot/model.sdf</uri>
-        </include>
-
-    </model>
 
   </world>
 </sdf>
