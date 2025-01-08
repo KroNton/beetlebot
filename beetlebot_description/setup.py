@@ -19,8 +19,8 @@ setup(
         ('share/' + package_name, ['package.xml']),
         
         # Install model files in the share directory
-        (os.path.join('share', package_name, 'models','beetlebot'), glob('models/beetlebot/*')),
-
+        (os.path.join('share', package_name, 'models','beetlebot'), glob('models/beetlebot/*.sdf')),
+        (os.path.join('share', package_name, 'models','beetlebot','sub_models'), glob('models/beetlebot/sub_models/*.sdf')),
         # (os.path.join('share', package_name, 'hooks'), glob('hooks/*')),  
 
         (os.path.join('share', package_name, 'launch'), glob('launch/*')),
