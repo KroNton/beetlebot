@@ -86,7 +86,6 @@ def generate_launch_description():
         executable='parameter_bridge',
         parameters=[{
             'config_file': os.path.join(pkg_project_gazebo, 'config', 'beetlebot_ros_bridge.yaml'),
-            'qos_overrides./tf_static.publisher.durability': 'transient_local',
         }],
         output='screen'
     )

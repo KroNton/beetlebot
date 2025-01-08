@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <sdf version='1.7'>
-  <world name='world_demo'>
+  <world name='beetlebot_world'>
     <physics name='1ms' type='ignored'>
       <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>
@@ -454,13 +454,13 @@
       </link>
     </model>
 
-    <include>
+    <!-- <include>
       <uri>
         https://fuel.ignitionrobotics.org/1.0/MovAi/models/Tugbot
       </uri>
       <name>tugbot</name>
       <pose>2.75268 1.0014 0.132279 0 0 0</pose>
-    </include>
+    </include> -->
 
 
   </world>

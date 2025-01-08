@@ -160,7 +160,7 @@
 
         <!-- Include a "beetlebot" robot inside beetlebot_1 model as nested model  -->
 
-        <model name="beetlebot_1">
+        <!-- <model name="beetlebot_1">
 
             <self_collide>true</self_collide>
             <pose>1 1 0.35 0 0 0</pose>
@@ -168,13 +168,13 @@
                 <uri>package://beetlebot_description/models/beetlebot/model.sdf</uri>
             </include>
 
-        </model>
+        </model> -->
 
-        <include>
+        <!-- <include>
             <uri>
             https://fuel.gazebosim.org/1.0/cyborg/models/Walking person
             </uri>
-        </include>
+        </include> -->
 
     </world>
 </sdf>
