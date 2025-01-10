@@ -543,10 +543,8 @@
                 <child>lidar</child>
             </joint> 
 
-            <!-- <include>
-                <uri>file://sub_models/camera_sensor.sdf</uri>
-            </include>      -->
- 
+
+
             <plugin
                     filename="gz-sim-diff-drive-system"
                     name="gz::sim::systems::DiffDrive">
@@ -578,8 +576,25 @@
                 <!-- <update_rate>30</update_rate> -->
                 <joint_name>base_link_to_wheel_left</joint_name>
                 <joint_name>base_link_to_wheel_right</joint_name>
-            </plugin>   
- 
+            </plugin>  
+
+
+            
+
+             <!-- include external camera model with sensor  -->
+    
+            <!-- <include>
+                <uri>model://beetlebot_description/models/beetlebot/sub_models/camera_sensor/model.sdf</uri>
+                <pose relative_to='base_link'>-0.3 0 0.34 0 0 3.14159</pose>
+                <name>camera_sensor</name>
+            </include> 
+
+            <joint name='base_to_camera_joint' type='fixed'>
+                <parent>base_link</parent>
+                <child>camera_sensor::camera</child>
+            </joint> -->
+
         </model>
+
 
     </sdf>
