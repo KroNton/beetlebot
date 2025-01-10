@@ -160,7 +160,7 @@
 
         <!-- Include a "beetlebot" robot inside beetlebot_1 model as nested model  -->
 
-        <!-- <model name="beetlebot_1">
+        <model name="beetlebot">
 
             <self_collide>true</self_collide>
             <pose>1 1 0.35 0 0 0</pose>
@@ -168,7 +168,18 @@
                 <uri>package://beetlebot_description/models/beetlebot/model.sdf</uri>
             </include>
 
-        </model> -->
+            <plugin
+                filename="gz-sim-pose-publisher-system"
+                name="gz::sim::systems::PosePublisher">
+                <tf_topic>/tf_static</tf_topic>
+                <publish_link_pose>true</publish_link_pose>
+                <use_pose_vector_msg>true</use_pose_vector_msg>
+                <static_publisher>true</static_publisher>
+                <static_update_frequency>1</static_update_frequency>
+            </plugin>
+
+
+        </model>
 
         <!-- <include>
             <uri>

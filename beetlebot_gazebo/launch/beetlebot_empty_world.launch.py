@@ -33,7 +33,15 @@ def generate_launch_description():
                 os.environ["GZ_SIM_RESOURCE_PATH"] += (':' + resource_path)
         else:
             os.environ["GZ_SIM_RESOURCE_PATH"] = (':'.join(gazebo_resource_paths))
+
+    if "GZ_SIM_MODEL_PATH" in os.environ:
+        for resource_path in gazebo_resource_paths:
+            if resource_path not in os.environ["GZ_SIM_MODEL_PATH"]:
+                os.environ["GZ_SIM_MODEL_PATH"] += (':' + resource_path)
+        else:
+            os.environ["GZ_SIM_MODEL_PATH"] = (':'.join(gazebo_resource_paths))      
             
+                  
     # Load the SDF file from "description" package
     sdf_file  =  os.path.join(package_directory_description, 'models', 'beetlebot', 'model.sdf')
     with open(sdf_file, 'r') as infp:
@@ -90,13 +98,14 @@ def generate_launch_description():
         executable='parameter_bridge',
         parameters=[{
             'config_file': os.path.join(pkg_project_gazebo, 'config', 'beetlebot_ros_bridge.yaml'),
+            'qos_overrides./tf_static.publisher.durability': 'transient_local',
         }],
         output='screen'
     )
 
     return LaunchDescription([
         gz_sim,
-        start_gazebo_ros_spawner_cmd,
+        # start_gazebo_ros_spawner_cmd,
         DeclareLaunchArgument('rviz', default_value='true',description='Open RViz.'),
         bridge,
         robot_state_publisher,
