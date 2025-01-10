@@ -20,9 +20,9 @@ setup(
         
         # Install model files in the share directory
         (os.path.join('share', package_name, 'models','beetlebot'), glob('models/beetlebot/*.sdf')),
-        (os.path.join('share', package_name, 'models','beetlebot','sub_models'), glob('models/beetlebot/sub_models/*.sdf')),
-        # (os.path.join('share', package_name, 'hooks'), glob('hooks/*')),  
+        (os.path.join('share', package_name, 'models','beetlebot','sub_models','camera_sensor'), glob('models/beetlebot/sub_models/camera_sensor/*.sdf')),
 
+        (os.path.join('share', package_name, 'sub_models','camera_sensor'), glob('sub_models/camera_sensor/*.sdf')),
         (os.path.join('share', package_name, 'launch'), glob('launch/*')),
 
         (os.path.join('share', package_name, 'config'), glob('config/*')),
