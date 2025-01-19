@@ -555,44 +555,6 @@
                 <child>lidar</child>
             </joint> 
 
-
-
-            <plugin
-                    filename="gz-sim-diff-drive-system"
-                    name="gz::sim::systems::DiffDrive">
-                    <left_joint>base_link_to_wheel_left</left_joint>
-                    <right_joint>base_link_to_wheel_right</right_joint>
-                    <wheel_separation>0.6</wheel_separation>
-                    <wheel_radius>0.15</wheel_radius>
-                    <odom_publish_frequency>100</odom_publish_frequency>
-                    <max_linear_acceleration>1</max_linear_acceleration>
-                    <min_linear_acceleration>-1</min_linear_acceleration>
-                    <max_angular_acceleration>2</max_angular_acceleration>
-                    <min_angular_acceleration>-2</min_angular_acceleration>
-                    <max_linear_velocity>1</max_linear_velocity>
-                    <min_linear_velocity>-1</min_linear_velocity>
-                    <max_angular_velocity>4</max_angular_velocity>
-                    <min_angular_velocity>-4</min_angular_velocity>
-                    <topic>cmd_vel</topic>
-                    <odom_topic>odom</odom_topic>
-                    <frame_id>beetlebot/odom</frame_id>
-                             <!-- output -->
-                    <publish_wheel_tf>false</publish_wheel_tf>
-                    <!-- <tf_topic>/tf</tf_topic>
-                    <odom_topic>odom</odom_topic>
-                    <frame_id>odom</frame_id> -->
-                    <child_frame_id>beetlebot</child_frame_id> 
-            </plugin>
-
-            <plugin filename="gz-sim-joint-state-publisher-system"
-                name="gz::sim::systems::JointStatePublisher">
-                <topic>joint_states</topic>
-                <!-- <update_rate>30</update_rate> -->
-                <joint_name>base_link_to_wheel_left</joint_name>
-                <joint_name>base_link_to_wheel_right</joint_name>
-
-            </plugin>
-
             <link name="camera">
             <pose relative_to='base_link'>0.3 0 0.34 0 0 0</pose>
                 <visual name='camera visual'>
@@ -633,7 +595,7 @@
                     <visualize>true</visualize>
                     <update_rate>30</update_rate>
                     <topic>camera/image_raw</topic>
-                    <gz_frame_id>beetlebot/lidar</gz_frame_id>
+                    <gz_frame_id>beetlebot/camera</gz_frame_id>
                     <camera name="intel_realsense_r200">
                     <camera_info_topic>camera/camera_info</camera_info_topic>
                     <horizontal_fov>1.02974</horizontal_fov>
@@ -666,7 +628,7 @@
             </joint>
             
 
-             <!-- include external camera model with sensor  -->
+             <!-- include external depth camera model with sensor  -->
     
             <!-- <include>
                 <uri>model://beetlebot_description/models/beetlebot/sub_models/camera_sensor/model.sdf</uri>
@@ -680,13 +642,57 @@
             </joint> -->
 
 
+            <!-- add DiffDrive plugin to control the robot
+            ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1DiffDrive.html -->
+
+            <plugin
+                    filename="gz-sim-diff-drive-system"
+                    name="gz::sim::systems::DiffDrive">
+                    <left_joint>base_link_to_wheel_left</left_joint>
+                    <right_joint>base_link_to_wheel_right</right_joint>
+                    <wheel_separation>0.6</wheel_separation>
+                    <wheel_radius>0.15</wheel_radius>
+                    <odom_publish_frequency>100</odom_publish_frequency>
+                    <max_linear_acceleration>1</max_linear_acceleration>
+                    <min_linear_acceleration>-1</min_linear_acceleration>
+                    <max_angular_acceleration>2</max_angular_acceleration>
+                    <min_angular_acceleration>-2</min_angular_acceleration>
+                    <max_linear_velocity>1</max_linear_velocity>
+                    <min_linear_velocity>-1</min_linear_velocity>
+                    <max_angular_velocity>4</max_angular_velocity>
+                    <min_angular_velocity>-4</min_angular_velocity>
+                    <topic>cmd_vel</topic>
+                    <publish_wheel_tf>false</publish_wheel_tf>
+                    
+                    <!-- <odom_topic>odom</odom_topic> -->
+                    <!-- <frame_id>beetlebot/odom</frame_id> -->
+                    <!-- <tf_topic>/tf</tf_topic> -->
+                    <!-- <odom_topic>odom</odom_topic> -->
+                    <!-- <frame_id>odom</frame_id>  -->
+                    <!-- <child_frame_id>beetlebot</child_frame_id>  -->
+            </plugin>
+
+            
+            <!-- 
+            
+            add OdometryPublisher plugin to publish odometry instedad of diff-drive plugin 
+
+            ref: https://gazebosim.org/api/sim/8/classgz_1_1sihttps://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1PosePublisher.htmlm_1_1systems_1_1OdometryPublisher.html
+             -->
 
             <plugin
                 filename="gz-sim-odometry-publisher-system"
                 name="gz::sim::systems::OdometryPublisher">
+                <odom_topic>odom</odom_topic>
+                <odom_covariance_topic>odom_covariance</odom_covariance_topic>
+                <!-- <xyz_offset>1 1 0</xyz_offset> -->
                 <odom_frame>beetlebot/odom</odom_frame>
                 <robot_base_frame>beetlebot</robot_base_frame>
             </plugin>
+
+
+            <!-- add PosePublisher plugin to publish pose of the robot
+            ref:https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1PosePublisher.html -->
 
             <plugin
                 filename="gz-sim-pose-publisher-system"
@@ -695,6 +701,18 @@
                 <use_pose_vector_msg>true</use_pose_vector_msg>
                 <static_publisher>true</static_publisher>
                 <static_update_frequency>1</static_update_frequency>
+            </plugin>
+
+            <!-- add JointStatePublisher plugin to publish joint states of the robot
+            ref:https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1JointStatePublisher.html -->
+
+            <plugin filename="gz-sim-joint-state-publisher-system"
+                name="gz::sim::systems::JointStatePublisher">
+                <topic>joint_states</topic>
+                <!-- <update_rate>30</update_rate> -->
+                <joint_name>base_link_to_wheel_left</joint_name>
+                <joint_name>base_link_to_wheel_right</joint_name>
+
             </plugin>
 
 
