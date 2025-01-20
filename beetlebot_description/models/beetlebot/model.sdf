@@ -1,5 +1,5 @@
-<?xml version="1.0" ?>
-<sdf version="1.10">
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.8">
         <model name="beetlebot" >
             <link name="beetlebot">
                 <pose relative_to='__model__'>0 0 0.0 0 0 0</pose>   
@@ -158,6 +158,7 @@
 
 
                 <!-- top_base link -->
+           
             <link name="top_base">
                 <!-- Pose relative to base_link -->
                 <pose relative_to='base_link'>0 0 0.45 0 0 0</pose>
@@ -487,10 +488,10 @@
                 <visual name='lidar visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
-                        <cylinder>
-                            <radius>0.1</radius>
-                            <length>0.13538975482266932</length>
-                        </cylinder>
+                        <mesh>
+                            <uri>model://beetlebot_description/meshes/laser_link.dae</uri>
+                            <scale>2 2 2</scale>
+                        </mesh>
                     </geometry>
                     <material>
                         <ambient>0 0 0 1</ambient>
@@ -502,10 +503,10 @@
                 <collision name='lidar collision'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
-                        <cylinder>
-                            <radius>0.1</radius>
-                            <length>0.13538975482266932</length>
-                        </cylinder>
+                        <mesh>
+                            <uri>model://beetlebot_description/meshes/laser_link.dae</uri>
+                            <scale>2 2 2</scale>
+                        </mesh>
                     </geometry>
                 </collision>
                 <inertial>
@@ -556,7 +557,7 @@
             </joint> 
 
             <link name="camera">
-            <pose relative_to='base_link'>0.3 0 0.34 0 0 0</pose>
+                <pose relative_to='base_link'>0.3 0 0.34 0 -0.785398 0</pose>
                 <visual name='camera visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
@@ -617,36 +618,64 @@
                         <stddev>0.007</stddev>
                     </noise>
                     </camera>
-            </sensor>
+                </sensor>
+
+                <sensor name="depth_camera" type="depth">
+                    <always_on>true</always_on>
+                    <visualize>true</visualize>
+                    <update_rate>30</update_rate>
+                    <topic>camera/depth/image_raw</topic>
+                    <gz_frame_id>beetlebot/camera</gz_frame_id>
+                    <depth_camera name="intel_realsense_r200">
+                        <camera_info_topic>camera/depth/camera_info</camera_info_topic>
+                        <horizontal_fov>1.02974</horizontal_fov>
+                        <image>
+                            <width>1920</width>
+                            <height>1080</height>
+                            <format>R8G8B8</format>
+                        </image>
+                        <clip>
+                            <near>0.02</near>
+                            <far>300</far>
+                        </clip>
+                        <noise>
+                            <type>gaussian</type>
+                            <!-- Noise is sampled independently per pixel on each frame.
+                                That pixel's noise value is added to each of its color
+                                channels, which at that point lie in the range [0,1]. -->
+                            <mean>0.0</mean>
+                            <stddev>0.007</stddev>
+                        </noise>
+                    </depth_camera>
+                </sensor>
             </link>
 
 
             <joint name="base_link_to_camera" type="fixed">
-                <pose relative_to='camera'>0.0 0 0.0 0 0 0</pose>
+                <pose relative_to='camera'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>camera</child>
             </joint>
             
 
-             <!-- include external depth camera model with sensor  -->
-    
-            <!-- <include>
-                <uri>model://beetlebot_description/models/beetlebot/sub_models/camera_sensor/model.sdf</uri>
+        <!-- include external camera model with sensor  -->
+
+
+            <!-- <include merge="true">
+                <uri>model://beetlebot_description/models/sub_models/camera_sensor/model.sdf</uri>
                 <pose relative_to='base_link'>-0.3 0 0.34 0 0 3.14159</pose>
                 <name>camera_sensor</name>
-            </include> 
-
-            <joint name='base_to_camera_joint' type='fixed'>
+            </include>  -->
+            
+            <!-- <joint name='model_to_camera_joint' type='fixed'>
                 <parent>base_link</parent>
-                <child>camera_sensor::camera</child>
+                <child>camera_sensor_link</child>
             </joint> -->
-
 
             <!-- add DiffDrive plugin to control the robot
             ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1DiffDrive.html -->
 
-            <plugin
-                    filename="gz-sim-diff-drive-system"
+            <plugin filename="gz-sim-diff-drive-system"
                     name="gz::sim::systems::DiffDrive">
                     <left_joint>base_link_to_wheel_left</left_joint>
                     <right_joint>base_link_to_wheel_right</right_joint>
@@ -673,15 +702,10 @@
             </plugin>
 
             
-            <!-- 
-            
-            add OdometryPublisher plugin to publish odometry instedad of diff-drive plugin 
+            <!--  add OdometryPublisher plugin to publish odometry instedad of diff-drive plugin 
+            ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1OdometryPublisher.html -->
 
-            ref: https://gazebosim.org/api/sim/8/classgz_1_1sihttps://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1PosePublisher.htmlm_1_1systems_1_1OdometryPublisher.html
-             -->
-
-            <plugin
-                filename="gz-sim-odometry-publisher-system"
+            <plugin filename="gz-sim-odometry-publisher-system"
                 name="gz::sim::systems::OdometryPublisher">
                 <odom_topic>odom</odom_topic>
                 <odom_covariance_topic>odom_covariance</odom_covariance_topic>
@@ -692,10 +716,9 @@
 
 
             <!-- add PosePublisher plugin to publish pose of the robot
-            ref:https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1PosePublisher.html -->
+            ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1PosePublisher.html -->
 
-            <plugin
-                filename="gz-sim-pose-publisher-system"
+            <plugin filename="gz-sim-pose-publisher-system"
                 name="gz::sim::systems::PosePublisher">
                 <publish_link_pose>true</publish_link_pose>
                 <use_pose_vector_msg>true</use_pose_vector_msg>
@@ -704,7 +727,7 @@
             </plugin>
 
             <!-- add JointStatePublisher plugin to publish joint states of the robot
-            ref:https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1JointStatePublisher.html -->
+            ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1JointStatePublisher.html -->
 
             <plugin filename="gz-sim-joint-state-publisher-system"
                 name="gz::sim::systems::JointStatePublisher">
