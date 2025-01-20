@@ -488,10 +488,10 @@
                 <visual name='lidar visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
-                        <mesh>
-                            <uri>model://beetlebot_description/meshes/laser_link.dae</uri>
-                            <scale>2 2 2</scale>
-                        </mesh>
+                        <cylinder>
+                            <radius>0.1</radius>
+                            <length>0.13538975482266932</length>
+                        </cylinder>
                     </geometry>
                     <material>
                         <ambient>0 0 0 1</ambient>
@@ -503,10 +503,10 @@
                 <collision name='lidar collision'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
-                        <mesh>
-                            <uri>model://beetlebot_description/meshes/laser_link.dae</uri>
-                            <scale>2 2 2</scale>
-                        </mesh>
+                        <cylinder>
+                            <radius>0.1</radius>
+                            <length>0.13538975482266932</length>
+                        </cylinder>
                     </geometry>
                 </collision>
                 <inertial>
