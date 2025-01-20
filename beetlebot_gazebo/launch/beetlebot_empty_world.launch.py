@@ -25,8 +25,10 @@ def generate_launch_description():
     # NOTE: Do this BEFORE launching Gazebo Sim #
 
     install_dir_path = (get_package_prefix(package_description) + "/share")
-    robot_sub_models_path = os.path.join(package_directory_description, "sub_models")
-    gazebo_resource_paths = [install_dir_path, robot_sub_models_path]
+    # robot_sub_models_path = os.path.join(package_directory_description, "sub_models")
+
+    gazebo_resource_paths = [install_dir_path]
+
     if "GZ_SIM_RESOURCE_PATH" in os.environ:
         for resource_path in gazebo_resource_paths:
             if resource_path not in os.environ["GZ_SIM_RESOURCE_PATH"]:
@@ -41,7 +43,13 @@ def generate_launch_description():
         else:
             os.environ["GZ_SIM_MODEL_PATH"] = (':'.join(gazebo_resource_paths))      
             
-                  
+    if "SDF_PATH" in os.environ:
+        for resource_path in gazebo_resource_paths:
+            if resource_path not in os.environ["SDF_PATH"]:
+                os.environ["SDF_PATH"] += (':' + resource_path)
+        else:
+            os.environ["SDF_PATH"] = (':'.join(gazebo_resource_paths))
+
     # Load the SDF file from "description" package
     sdf_file  =  os.path.join(package_directory_description, 'models', 'beetlebot', 'model.sdf')
     with open(sdf_file, 'r') as infp:

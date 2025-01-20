@@ -35,6 +35,12 @@
   gz_type_name: "gz.msgs.Image"
   direction: GZ_TO_ROS
 
+- ros_topic_name: "camera/depth/image_raw"
+  gz_topic_name: "camera/depth/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
 - ros_topic_name: "/tf"
   gz_topic_name: "/model/beetlebot/pose"
   ros_type_name: "tf2_msgs/msg/TFMessage"
