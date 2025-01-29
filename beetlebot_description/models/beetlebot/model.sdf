@@ -557,7 +557,7 @@
             </joint> 
 
             <link name="camera">
-                <pose relative_to='base_link'>0.3 0 0.34 0 -0.785398 0</pose>
+                <pose relative_to='base_link'>0.3 0 0.34 0 0 0</pose>
                 <visual name='camera visual'>
                     <pose>0 0 0 0 0 0</pose>
                     <geometry>
@@ -651,12 +651,33 @@
             </link>
 
 
-            <joint name="base_link_to_camera" type="fixed">
+            <joint name="base_link_to_camera" type="revolute">
                 <pose relative_to='camera'>0 0 0 0 0 0</pose>
                 <parent>base_link</parent>
                 <child>camera</child>
+                <axis>
+                    <xyz expressed_in='__model__'>0 1 0</xyz>
+                    <limit>
+                        <lower>-1.14</lower>
+                        <upper>1.14</upper>
+                    </limit>
+                </axis>
             </joint>
             
+            <plugin
+                filename="gz-sim-joint-position-controller-system"
+                name="gz::sim::systems::JointPositionController">
+                <joint_name>base_link_to_camera</joint_name>
+                <!-- <topic>camera_angle</topic> -->
+                <p_gain>0.07</p_gain>
+                <i_gain>0.001</i_gain>
+                <d_gain>0.2</d_gain>
+                <i_max>1</i_max>
+                <i_min>-1</i_min>
+                <cmd_max>1</cmd_max>
+                <cmd_min>-1</cmd_min>
+            </plugin>
+
 
         <!-- include external camera model with sensor  -->
 
