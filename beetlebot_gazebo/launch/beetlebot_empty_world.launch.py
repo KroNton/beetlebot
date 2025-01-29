@@ -15,6 +15,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Configure ROS nodes for launch
     package_description ="beetlebot_description"
+    package_gazebo = "beetlebot_gazebo"
     # Setup project paths
     pkg_project_gazebo = get_package_share_directory('beetlebot_gazebo')
     package_directory_description = get_package_share_directory(package_description)
@@ -26,8 +27,9 @@ def generate_launch_description():
 
     install_dir_path = (get_package_prefix(package_description) + "/share")
     # robot_sub_models_path = os.path.join(package_directory_description, "sub_models")
+    install_gazebo_dir_path = (get_package_prefix(package_gazebo) + "/share")
 
-    gazebo_resource_paths = [install_dir_path]
+    gazebo_resource_paths = [install_dir_path,install_gazebo_dir_path,]
 
     if "GZ_SIM_RESOURCE_PATH" in os.environ:
         for resource_path in gazebo_resource_paths:
