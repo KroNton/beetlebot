@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="yellow_line_track">
+    <static>true</static>
+    <link name="track_link">
+      <!-- Horizontal segment from (0,0) to (5,0) -->
+      <visual name="segment1">
+        <pose>2.5 0 0.005 0 0 0</pose>  <!-- Z-position halved to 0.005 -->
+        <geometry>
+          <box>
+            <size>5 0.1 0.01</size>  <!-- Height reduced to 0.01m -->
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (5,0) to (5,5) -->
+      <visual name="segment2">
+        <pose>5 2.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>5 0.1 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (5,5) to (2,5) -->
+      <visual name="segment3">
+        <pose>3.5 5 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.1 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (2,5) to (2,2) -->
+      <visual name="segment4">
+        <pose>2 3.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.1 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (2,2) to (0,2) -->
+      <visual name="segment5">
+        <pose>1 2 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2 0.1 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (0,2) to (0,0) -->
+      <visual name="segment6">
+        <pose>0 1 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>2 0.1 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
