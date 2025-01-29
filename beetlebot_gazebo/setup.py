@@ -15,8 +15,10 @@ setup(
 
         # Install world files in the share directory
         
-        # (os.path.join('share', package_name, 'hooks'), glob('hooks/*')),  
-
+        # (os.path.join('share', package_name, 'hooks'), glob('hooks/*')),
+        # 
+        (os.path.join('share', package_name, 'models','track1'), glob('models/track1/*.sdf')),  
+        (os.path.join('share', package_name, 'models','track2'), glob('models/track2/*.sdf')),
         (os.path.join('share', package_name, 'launch'), glob('launch/*')),
 
         (os.path.join('share', package_name, 'config'), glob('config/*')),
