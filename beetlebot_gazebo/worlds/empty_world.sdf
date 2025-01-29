@@ -157,6 +157,14 @@
                 linear: {x: 0.0}, angular: {z: 0.0}
             </output>
         </plugin>
+
+        <model name="Track">
+            <static>1</static>
+            <include>
+                <pose>0 0 0.00 0.0 0.0 0.0</pose>
+                <uri>package://beetlebot_gazebo/models/track1/model.sdf</uri>
+            </include>
+        </model>
         
 
         <!-- Include a "beetlebot" robot inside beetlebot model as nested model  -->
@@ -164,7 +172,7 @@
         <model name="beetlebot">
 
             <!-- <self_collide>true</self_collide> -->
-            <pose>1 1 0.35 0 0 0</pose>
+            <pose>0 0 0.35 0 0 0</pose>
             <include merge="true" >  <!-- merge="true" to merge the nested model with the parent model -->
                 <uri>package://beetlebot_description/models/beetlebot/model.sdf</uri>
             </include>
