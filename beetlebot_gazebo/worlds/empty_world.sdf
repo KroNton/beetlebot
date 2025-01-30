@@ -162,7 +162,7 @@
             <static>1</static>
             <include>
                 <pose>0 0 0.00 0.0 0.0 0.0</pose>
-                <uri>package://beetlebot_gazebo/models/track1/model.sdf</uri>
+                <uri>package://beetlebot_gazebo/models/track2/model.sdf</uri>
             </include>
         </model>
         
