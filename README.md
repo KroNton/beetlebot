@@ -138,5 +138,5 @@ This file configures the ROS-Gazebo bridge for topic communication.
 - Add support for additional simulation environments.
 
 ## Resources 
-- ros_gz_project_template
-- 
+- ### [ros gz project template](https://github.com/gazebosim/ros_gz_project_template)
+- ### [turtlebot3 simulations new gazebo](https://github.com/azeey/turtlebot3_simulations/tree/new_gazebo)
