@@ -1,12 +1,41 @@
-Here is the updated documentation with the camera angle control part moved before the "Using Beetlebot in Custom Worlds" section:
-
-# Beetlebot Documentation
+# Beetlebot 
 
 ## Overview
 
 This repository contains the **Beetlebot** robot description and its configurations, designed for seamless integration into any custom Gazebo world with custom GUI configurations.
 
-!Beetlebot
+## Including the Model in a Custom World
+
+To include the Beetlebot model in your custom world, follow these steps:
+
+1. Add the `beetlebot_description` model to your world by referencing the `beetlebot/beetlebot_description/models/beetlebot/model.sdf` file.
+
+2. Example of including the model in an SDF world file:
+   ```xml
+   <?xml version="1.0" ?>
+   <sdf version="1.7">
+     <world name="custom_world">
+       <!-- Other world configurations -->
+
+       <!-- Include Beetlebot model -->
+       <include>
+         <uri>model://beetlebot_description/models/beetlebot</uri>
+         <pose>0 0 0 0 0 0</pose>
+       </include>
+
+       <!-- Other world configurations -->
+     </world>
+   </sdf>
+   ```
+
+3. Customize the sensors or other components by editing the relevant `.sdf` files in the `sub_models/` directory.
+
+4. Update the `world_gui.config` file to define your preferred GUI layout.
+
+5. Launch the simulation in Gazebo:
+   ```bash
+   gz sim <your_world_name>.sdf --gui-config world_gui.config
+   ```
 
 ## Features
 
@@ -76,20 +105,6 @@ You can control the camera angle by publishing to the `/camera_angle` topic.
    ```
 
 ![Robot in Warehouse](imgs/robot_warehouse.gif)
-
-### Using Beetlebot in Custom Worlds
-
-1. Add the `beetlebot_description` model to your world by referencing the 
-
-model.sdf
-
- file.
-2. Customize the sensors or other components by editing the relevant `.sdf` files in the `sub_models/` directory.
-3. Update the `world_gui.config` file to define your preferred GUI layout.
-4. Launch the simulation in Gazebo:
-   ```bash
-   gz sim <your_world_name>.sdf --gui-config world_gui.config
-   ```
 
 ## Configuration Files
 
