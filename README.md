@@ -1,24 +1,32 @@
 # BeetleBot - Differential Drive Robot
 
-Welcome to the BeetleBot repository! This repository contains different configurations for the BeetleBot differential drive robot with Gazebo sim 
+Welcome to the BeetleBot repository! This repository contains different configurations for the BeetleBot differential drive robot with Gazebo sim. Each branch in this repository represents a unique configuration of the same beetlebot robot in the world it operates in.
 
-. Each branch in this repository represents a unique configuration of the robot in the world it operates in.
 
 ## Branches Overview
 
-This repository has three branches, each with a different configuration for the robot and the world. Below is a summary of the differences between each branch:
+This repository has three branches, each with a different configuration for the robot and the world. 
+
+**Below is a summary of the differences between each branch:**
 
 ### 1. [SDF-format : include robot model inside world SDF Configuration](https://github.com/KroNton/beetlebot/tree/sdf-format_include-model-world)
+
+In this branch beetlebot robot is writen in SDF format and included inside the main world such way increase the flexibility and reusability of the robot in any new custom world.
 
 
 ### 2. [SDF-format : spawn robot model in the SDF world ](https://github.com/KroNton/beetlebot/tree/sdf-format_spawn-model-launch)
 
+In this branch beetlebot robot is writen in SDF format and spawnd inside the main world using `spawner cmd` in the launch file.
 
 ### 3. [URDF-format : spawn the Xacro robot model in the SDF world](https://github.com/KroNton/beetlebot/tree/urdf-format)
 
+In this branch beetlebot robot is writen as URDF  and spawnd inside the main world using `spawner cmd` in the launch file.
+
+![alt text](imgs/warehouse_general.gif)
+
 ## Features
 
-- **Separate SDF Robot Module**: Each robot component is defined as a standalone SDF module for maximum flexibility and reusability.
+- **Separate Robot Module**: Each robot component is defined as a standalone SDF or URDF module for maximum flexibility and reusability.
 - **Custom World GUI Configuration Plugins**: Includes a configurable GUI plugin to tailor the simulation interface to your needs.
 - **360° LIDAR Plugin**: Provides a simulated LIDAR sensor capable of full 360° scanning for obstacle detection and mapping.
 - **Differential Drive Plugin**: Implements a differential drive controller for robot mobility, ensuring smooth and accurate navigation.
@@ -52,24 +60,40 @@ Ensure you have the following:
 ### Running the Robot
 
 #### To run the robot in the empty world:
-```bash
+
+```bashros_gz_project_template
 ros2 launch beetlebot_gazebo beetlebot_empty_world.launch.py
 ```
+
+### Controlling the Robot
+
+1. **Using gazebo** 
+   - add `key publisher` to gazebo form top right 
+   - Use the keyboard arrow keys to move the robot.
+   - Press `k` to stop the robot.
+2. **Using ROS teleop node** 
+
+   ```
+   ros2 run teleop_twist_keyboard teleop_twist_keyboard
+   ```
+   
+![alt text](imgs/beetlebot_empty_world.gif)
+
+
 
 #### To run the robot in the warehouse world:
 ```bash
 ros2 launch beetlebot_gazebo beetlebot_warehouse.launch.py
 ```
+![alt text](imgs/beetlebot_warehouse_world.gif)
+
 
 #### To run the robot in the track world:
 ```bash
 ros2 launch beetlebot_gazebo beetlebot_track_world.launch.py
 ```
+![alt text](imgs/beetlebot_track.gif)
 
-### Controlling the Robot
-
-- Use the keyboard arrow keys to move the robot.
-- Press `k` to stop the robot.
 
 ### Controlling the Camera Angle
 
@@ -82,8 +106,7 @@ You can control the camera angle by publishing to the `/camera_angle` topic.
    ```bash
    ros2 topic pub /camera_angle std_msgs/msg/Float64 "{data: 0.5}"
    ```
-
-![Robot in Warehouse](imgs/robot_warehouse.gif)
+![alt text](imgs/camera_angle.gif)
 
 ## Configuration Files
 
@@ -104,54 +127,8 @@ This file configures the ROS-Gazebo bridge for topic communication.
   ros_type_name: "rosgraph_msgs/msg/Clock"
   gz_type_name: "gz.msgs.Clock"
   direction: GZ_TO_ROS
+.....
 
-- ros_topic_name: "/odom"
-  gz_topic_name: "/odom"
-  ros_type_name: "nav_msgs/msg/Odometry"
-  gz_type_name: "gz.msgs.Odometry"
-  direction: GZ_TO_ROS
-
-- ros_topic_name: "/lidar"
-  gz_topic_name: "/lidar"
-  ros_type_name: "sensor_msgs/msg/LaserScan"
-  gz_type_name: "gz.msgs.LaserScan"
-  direction: GZ_TO_ROS
-
-- ros_topic_name: "/joint_states"
-  gz_topic_name: "/joint_states"
-  ros_type_name: "sensor_msgs/msg/JointState"
-  gz_type_name: "gz.msgs.Model"
-  direction: GZ_TO_ROS
-
-- ros_topic_name: "/camera/image_raw"
-  gz_topic_name: "/camera/image_raw"
-  ros_type_name: "sensor_msgs/msg/Image"
-  gz_type_name: "gz.msgs.Image"
-  direction: GZ_TO_ROS
-
-- ros_topic_name: "camera/depth/image_raw"
-  gz_topic_name: "camera/depth/image_raw"
-  ros_type_name: "sensor_msgs/msg/Image"
-  gz_type_name: "gz.msgs.Image"
-  direction: GZ_TO_ROS
-
-- ros_topic_name: "/tf"
-  gz_topic_name: "/model/beetlebot/pose"
-  ros_type_name: "tf2_msgs/msg/TFMessage"
-  gz_type_name: "gz.msgs.Pose_V"
-  direction: GZ_TO_ROS
-
-- ros_topic_name: "/tf_static"
-  gz_topic_name: "/model/beetlebot/pose_static"
-  ros_type_name: "tf2_msgs/msg/TFMessage"
-  gz_type_name: "gz.msgs.Pose_V"
-  direction: GZ_TO_ROS
-
-- ros_topic_name: "/camera_angle"
-  gz_topic_name: "/camera_angle"
-  ros_type_name: "std_msgs/msg/Float64"
-  gz_type_name: "gz.msgs.Double"
-  direction: ROS_TO_GZ
 ```
 
 ## Future Enhancements
@@ -160,3 +137,6 @@ This file configures the ROS-Gazebo bridge for topic communication.
 - Improve the robot's navigation algorithms.
 - Add support for additional simulation environments.
 
+## Resources 
+- ros_gz_project_template
+- 
