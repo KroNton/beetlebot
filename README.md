@@ -46,8 +46,13 @@ Ensure you have the following:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/KroNton/beetlebot.git
+   git clone --branch <branch-name> https://github.com/KroNton/beetlebot.git
    ```
+   replace `<branch-name>`with one of the following branches :
+   - `sdf-format_include-model-world`
+   - `sdf-format_spawn-model-launch`
+   - `urdf-format`
+   
 2. Build the ROS 2 package:
    ```bash
    colcon build
