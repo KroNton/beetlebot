@@ -1,6 +1,6 @@
 import os
 
-from ament_index_python.packages import (get_package_prefix, get_package_share_directory)
+from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
@@ -14,46 +14,14 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     # Configure ROS nodes for launch
-    package_description ="beetlebot_description"
-    package_gazebo = "beetlebot_gazebo"
+
     # Setup project paths
     pkg_project_gazebo = get_package_share_directory('beetlebot_gazebo')
-    package_directory_description = get_package_share_directory(package_description)
+    pkg_project_description = get_package_share_directory('beetlebot_description')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
 
-
-    # Set the Path to Robot Mesh Models for Loading in Gazebo Sim #
-    # NOTE: Do this BEFORE launching Gazebo Sim #
-
-    install_dir_path = (get_package_prefix(package_description) + "/share")
-    # robot_sub_models_path = os.path.join(package_directory_description, "sub_models")
-    install_gazebo_dir_path = (get_package_prefix(package_gazebo) + "/share")
-
-    gazebo_resource_paths = [install_dir_path,install_gazebo_dir_path,]
-
-    if "GZ_SIM_RESOURCE_PATH" in os.environ:
-        for resource_path in gazebo_resource_paths:
-            if resource_path not in os.environ["GZ_SIM_RESOURCE_PATH"]:
-                os.environ["GZ_SIM_RESOURCE_PATH"] += (':' + resource_path)
-        else:
-            os.environ["GZ_SIM_RESOURCE_PATH"] = (':'.join(gazebo_resource_paths))
-
-    if "GZ_SIM_MODEL_PATH" in os.environ:
-        for resource_path in gazebo_resource_paths:
-            if resource_path not in os.environ["GZ_SIM_MODEL_PATH"]:
-                os.environ["GZ_SIM_MODEL_PATH"] += (':' + resource_path)
-        else:
-            os.environ["GZ_SIM_MODEL_PATH"] = (':'.join(gazebo_resource_paths))      
-            
-    if "SDF_PATH" in os.environ:
-        for resource_path in gazebo_resource_paths:
-            if resource_path not in os.environ["SDF_PATH"]:
-                os.environ["SDF_PATH"] += (':' + resource_path)
-        else:
-            os.environ["SDF_PATH"] = (':'.join(gazebo_resource_paths))
-
     # Load the SDF file from "description" package
-    sdf_file  =  os.path.join(package_directory_description, 'models', 'beetlebot', 'model.sdf')
+    sdf_file  =  os.path.join(pkg_project_description, 'models', 'beetlebot', 'model.sdf')
     with open(sdf_file, 'r') as infp:
         robot_desc = infp.read()
 
@@ -115,8 +83,9 @@ def generate_launch_description():
 
     return LaunchDescription([
         gz_sim,
-        # start_gazebo_ros_spawner_cmd,
-        DeclareLaunchArgument('rviz', default_value='false',description='Open RViz.'),
+        start_gazebo_ros_spawner_cmd,
+        DeclareLaunchArgument('rviz', default_value='false',
+                              description='Open RViz.'),
         bridge,
         robot_state_publisher,
         rviz
