@@ -116,7 +116,7 @@ def generate_launch_description():
     return LaunchDescription([
         gz_sim,
         # start_gazebo_ros_spawner_cmd,
-        DeclareLaunchArgument('rviz', default_value='true',description='Open RViz.'),
+        DeclareLaunchArgument('rviz', default_value='false',description='Open RViz.'),
         bridge,
         robot_state_publisher,
         rviz
