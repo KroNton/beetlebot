@@ -453,16 +453,16 @@
         </collision>
       </link>
     </model>
+  
+  
+    <!-- <model name="beetlebot">
 
-    <model name="beetlebot">
-
-        <!-- <self_collide>true</self_collide> -->
         <pose>0 0 0.35 0 0 0</pose>
-        <include merge="true" >  <!-- merge="true" to merge the nested model with the parent model -->
+        <include merge="true" > 
             <uri>package://beetlebot_description/models/beetlebot/model.sdf</uri>
         </include>
 
-    </model>
+    </model> -->
 
   </world>
 </sdf>
