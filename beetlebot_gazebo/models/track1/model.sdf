@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="black_line_track">
+    <static>true</static>
+    <link name="track_link">
+      <!-- Main outer loop -->
+      <visual name="base_horizontal">
+        <pose>5 0 0.01 0 0 0</pose>
+        <geometry>
+          <box><size>10 0.2 0.02</size></box> <!-- 10m long base -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <visual name="right_vertical">
+        <pose>10 5 0.01 0 0 1.5708</pose>
+        <geometry>
+          <box><size>10 0.2 0.02</size></box> <!-- 10m tall right side -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <visual name="top_horizontal">
+        <pose>7 10 0.01 0 0 0</pose>
+        <geometry>
+          <box><size>6 0.2 0.02</size></box> <!-- 6m top section -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <!-- New inner complexity -->
+      <visual name="inner_vertical1">
+        <pose>4 8.5 0.01 0 0 1.5708</pose>
+        <geometry>
+          <box><size>3 0.2 0.02</size></box> <!-- First inner vertical -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <visual name="inner_horizontal">
+        <pose>5.5 7 0.01 0 0 0</pose>
+        <geometry>
+          <box><size>3 0.2 0.02</size></box> <!-- Inner cross connector -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <visual name="inner_vertical2">
+        <pose>7 5.5 0.01 0 0 1.5708</pose>
+        <geometry>
+          <box><size>3 0.2 0.02</size></box> <!-- Second inner vertical -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <visual name="lower_horizontal">
+        <pose>3.5 4 0.01 0 0 0</pose>
+        <geometry>
+          <box><size>7 0.2 0.02</size></box> <!-- Lower return path -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <visual name="final_vertical">
+        <pose>0 2 0.01 0 0 1.5708</pose>
+        <geometry>
+          <box><size>4 0.2 0.02</size></box> <!-- Final vertical closure -->
+        </geometry>
+        <material><ambient>1 1 0 1</ambient></material>
+      </visual>
+
+      <!-- Additional decorative elements -->
+      <visual name="diagonal1">
+        <pose>8 3 0.01 0.7854 0 0</pose>
+        <geometry>
+          <box><size>3 0.2 0.02</size></box> <!-- 45° diagonal segment -->
+        </geometry>
+        <material><ambient>1 0 0 1</ambient></material>
+      </visual>
+
+      <visual name="diagonal2">
+        <pose>2 6 0.01 -0.7854 0 0</pose>
+        <geometry>
+          <box><size>3 0.2 0.02</size></box> <!-- -45° diagonal segment -->
+        </geometry>
+        <material><ambient>0 1 0 1</ambient></material>
+      </visual>
+    </link>
+  </model>
+</sdf>

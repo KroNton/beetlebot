@@ -1,0 +1,303 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="yellow_line_track">
+    <static>true</static>
+    <link name="track_link">
+      <!-- Horizontal segment from (0,0) to (5,0) -->
+      <visual name="segment1">
+        <pose>2.5 0 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>5 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (5,0) to (5,5) -->
+      <visual name="segment2">
+        <pose>5 2.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>5 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (5,5) to (2,5) -->
+      <visual name="segment3">
+        <pose>3.5 5 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (2,5) to (2,2) -->
+      <visual name="segment4">
+        <pose>2 3.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (2,2) to (0,2) -->
+      <visual name="segment5">
+        <pose>1 2 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (0,2) to (0,0) -->
+      <visual name="segment6">
+        <pose>0 1 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>2 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Additional segments to make the track longer and more complex -->
+
+      <!-- Diagonal segment from (0,0) to (3,3) -->
+      <visual name="segment7">
+        <pose>1.5 1.5 0.005 0 0 0.7854</pose>  <!-- 45-degree rotation -->
+        <geometry>
+          <box>
+            <size>4.242 0.3 0.01</size>  <!-- Length calculated using Pythagorean theorem -->
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (3,3) to (6,3) -->
+      <visual name="segment8">
+        <pose>4.5 3 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (6,3) to (6,6) -->
+      <visual name="segment9">
+        <pose>6 4.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (6,6) to (3,6) -->
+      <visual name="segment10">
+        <pose>4.5 6 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (3,6) to (3,9) -->
+      <visual name="segment11">
+        <pose>3 7.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (3,9) to (0,9) -->
+      <visual name="segment12">
+        <pose>1.5 9 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (0,9) to (0,6) -->
+      <visual name="segment13">
+        <pose>0 7.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (0,6) to (-3,6) -->
+      <visual name="segment14">
+        <pose>-1.5 6 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (-3,6) to (-3,3) -->
+      <visual name="segment15">
+        <pose>-3 4.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (-3,3) to (-6,3) -->
+      <visual name="segment16">
+        <pose>-4.5 3 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (-6,3) to (-6,0) -->
+      <visual name="segment17">
+        <pose>-6 1.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (-6,0) to (-3,0) -->
+      <visual name="segment18">
+        <pose>-4.5 0 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (-3,0) to (-3,-3) -->
+      <visual name="segment19">
+        <pose>-3 -1.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Horizontal segment from (-3,-3) to (0,-3) -->
+      <visual name="segment20">
+        <pose>-1.5 -3 0.005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Vertical segment from (0,-3) to (0,0) -->
+      <visual name="segment21">
+        <pose>0 -1.5 0.005 0 0 1.5708</pose>
+        <geometry>
+          <box>
+            <size>3 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
