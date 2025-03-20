@@ -19,14 +19,13 @@ setup(
         ('share/' + package_name, ['package.xml']),
         
         # Install model files in the share directory
-        (os.path.join('share', package_name, 'models','beetlebot'), glob('models/beetlebot/*.sdf')),
+        (os.path.join('share', package_name, 'urdf'), glob('urdf/*')),
         (os.path.join('share', package_name, 'models','sub_models','camera_sensor'), glob('models/sub_models/camera_sensor/*.sdf')),
         (os.path.join('share', package_name, 'meshes'), glob('meshes/*')),
         (os.path.join('share', package_name, 'launch'), glob('launch/*')),
 
         (os.path.join('share', package_name, 'config'), glob('config/*')),
         
-        (os.path.join('share', package_name, 'worlds'), glob('worlds/*.sdf')),
     ],
 
     install_requires=['setuptools'],
