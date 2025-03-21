@@ -72,7 +72,7 @@ def generate_launch_description():
     rviz = Node(
        package='rviz2',
        executable='rviz2',
-       arguments=['-d', os.path.join(pkg_project_description, 'config', 'rrbot.rviz')],
+       arguments=['-d', os.path.join(pkg_project_description, 'config', 'beetlebot.rviz')],
        condition=IfCondition(LaunchConfiguration('rviz'))
     )
 
