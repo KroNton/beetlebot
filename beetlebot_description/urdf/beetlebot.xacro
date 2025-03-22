@@ -156,7 +156,7 @@
     </link>
 
     <!-- Front Caster Joint -->
-    <joint name="base_link_to_front_caster" type="continuous">
+    <joint name="base_link_to_front_caster" type="fixed">
         <parent link="base_link"/>
         <child link="front_caster"/>
         <origin xyz="0.2 0 -0.1" rpy="0 0 0"/>
@@ -188,7 +188,7 @@
     </link>
 
     <!-- Rear Caster Joint -->
-    <joint name="base_link_to_rear_caster" type="continuous">
+    <joint name="base_link_to_rear_caster" type="fixed">
         <parent link="base_link"/>
         <child link="rear_caster"/>
         <origin xyz="-0.2 0 -0.1" rpy="0 0 0"/>

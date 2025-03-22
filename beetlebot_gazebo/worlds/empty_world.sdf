@@ -160,15 +160,5 @@
 
         <!-- Include a "beetlebot" robot inside beetlebot model as nested model  -->
 
-        <model name="beetlebot">
-
-            <!-- <self_collide>true</self_collide> -->
-            <pose>0 0 0.35 0 0 0</pose>
-            <include merge="true" >  <!-- merge="true" to merge the nested model with the parent model -->
-                <uri>package://beetlebot_description/models/beetlebot/model.sdf</uri>
-            </include>
-
-        </model>
-
     </world>
 </sdf>
