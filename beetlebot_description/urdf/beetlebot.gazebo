@@ -72,6 +72,7 @@
             <static_update_frequency>1</static_update_frequency>
         </plugin>
     </gazebo>
+    
         <!-- add JointStatePublisher plugin to publish joint states of the robot
         ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1JointStatePublisher.html -->
     <gazebo>
@@ -84,4 +85,6 @@
 
         </plugin>
     </gazebo>
+
+
 </robot>
