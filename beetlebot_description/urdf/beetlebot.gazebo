@@ -1,5 +1,47 @@
 <?xml version="1.0"?>
 <robot>
+    <gazebo reference="footprint_to_base">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <gazebo reference="base_link_to_camera">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <gazebo reference="base_link_to_front_caster">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+    <gazebo reference="base_link_to_top_base">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+    <gazebo reference="base_link_to_rear_caster">
+            <preserveFixedJoint>true</preserveFixedJoint> 
+    </gazebo>
+    <gazebo reference="base_link_to_wheel_left">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+    <gazebo reference="base_link_to_left_bar">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <gazebo reference="base_link_to_right_bar">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <gazebo reference="base_link_to_rear_bar">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <gazebo reference="base_link_to_lidar">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+    <gazebo reference="base_link_to_imu">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+    <gazebo reference="base_link_to_camera">
+            <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
     <gazebo>    
         <plugin
             filename="gz-sim-joint-position-controller-system"
@@ -50,20 +92,20 @@
         <!--  add OdometryPublisher plugin to publish odometry instedad of diff-drive plugin 
         ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1OdometryPublisher.html -->
 
-    <gazebo>
+    <!-- <gazebo>
         <plugin filename="gz-sim-odometry-publisher-system"
             name="gz::sim::systems::OdometryPublisher">
             <odom_topic>odom</odom_topic>
             <odom_covariance_topic>odom_covariance</odom_covariance_topic>
-            <!-- <xyz_offset>1 1 0</xyz_offset> -->
+            <xyz_offset>1 1 0</xyz_offset>
             <odom_frame>beetlebot/odom</odom_frame>
             <robot_base_frame>beetlebot</robot_base_frame>
         </plugin>
-    </gazebo>
+    </gazebo> -->
 
         <!-- add PosePublisher plugin to publish pose of the robot
         ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1PosePublisher.html -->
-    <gazebo>
+    <!-- <gazebo>
         <plugin filename="gz-sim-pose-publisher-system"
             name="gz::sim::systems::PosePublisher">
             <publish_link_pose>true</publish_link_pose>
@@ -71,20 +113,20 @@
             <static_publisher>true</static_publisher>
             <static_update_frequency>1</static_update_frequency>
         </plugin>
-    </gazebo>
+    </gazebo> -->
     
         <!-- add JointStatePublisher plugin to publish joint states of the robot
         ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1JointStatePublisher.html -->
-    <gazebo>
+    <!-- <gazebo>
         <plugin filename="gz-sim-joint-state-publisher-system"
             name="gz::sim::systems::JointStatePublisher">
             <topic>joint_states</topic>
-            <!-- <update_rate>30</update_rate> -->
+            <update_rate>30</update_rate>
             <joint_name>base_link_to_wheel_left</joint_name>
             <joint_name>base_link_to_wheel_right</joint_name>
 
         </plugin>
-    </gazebo>
+    </gazebo> -->
 
 
 </robot>
