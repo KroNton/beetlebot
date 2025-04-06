@@ -4,7 +4,12 @@
         <xacro:include filename="$(find beetlebot_description)/urdf/beetlebot.gazebo" />
 
         <link name="beetlebot">
-            <pose relative_to='__model__'>0 0 0.0 0 0 0</pose>   
+            <pose relative_to='__model__'>0 0 0.0 0 0 0</pose>
+            <inertial>
+                <origin xyz="0 0 0.3" rpy="0 0 0"/>
+                <mass value="5"/>
+                <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742"/>
+            </inertial>
         </link>
 
         <joint name="footprint_to_base" type="fixed">
@@ -65,7 +70,7 @@
         <parent link="base_link"/>
         <child link="wheel_right"/>
         <origin xyz="0 -0.33 -0.05" rpy="1.5707963267948963 0 0"/>
-        <axis xyz="0 1 0"/>
+        <axis xyz="0 0 1"/>
     </joint>
 
     <!-- Left Wheel Link -->
@@ -97,7 +102,7 @@
         <parent link="base_link"/>
         <child link="wheel_left"/>
         <origin xyz="0 0.33 -0.05" rpy="1.5707963267948963 0 0"/>
-        <axis xyz="0 1 0"/>
+        <axis xyz="0 0 1"/>
     </joint>
 
     <!-- Top Base Link -->
