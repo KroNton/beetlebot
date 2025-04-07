@@ -5,20 +5,15 @@ Welcome to the BeetleBot repository! This repository contains different configur
 
 ## Branches Overview
 
-This repository has three branches, each with a different configuration for the robot and the world. 
+This repository has Two branches, each with a different configuration for the robot and the world. 
 
 **Below is a summary of the differences between each branch:**
 
-### 1. [SDF-format : include robot model inside world SDF Configuration](https://github.com/KroNton/beetlebot/tree/sdf-format_include-model-world)
-
-In this branch beetlebot robot is writen in SDF format and included inside the main world such way increase the flexibility and reusability of the robot in any new custom world.
-
-
-### 2. [SDF-format : spawn robot model in the SDF world ](https://github.com/KroNton/beetlebot/tree/sdf-format_spawn-model-launch)
+### 2. [SDF-format](https://github.com/KroNton/beetlebot/tree/sdf-format)
 
 In this branch beetlebot robot is writen in SDF format and spawnd inside the main world using `spawner cmd` in the launch file.
 
-### 3. [URDF-format : spawn the Xacro robot model in the SDF world](https://github.com/KroNton/beetlebot/tree/urdf-format)
+### 3. [URDF-format](https://github.com/KroNton/beetlebot/tree/urdf-format)
 
 In this branch beetlebot robot is writen as URDF  and spawnd inside the main world using `spawner cmd` in the launch file.
 
