@@ -9,11 +9,11 @@ This repository has Two branches, each with a different configuration for the ro
 
 **Below is a summary of the differences between each branch:**
 
-### 2. [SDF-format](https://github.com/KroNton/beetlebot/tree/sdf-format)
+### 1. [SDF-format](https://github.com/KroNton/beetlebot/tree/sdf-format)
 
 In this branch beetlebot robot is writen in SDF format and spawnd inside the main world using `spawner cmd` in the launch file.
 
-### 3. [URDF-format](https://github.com/KroNton/beetlebot/tree/urdf-format)
+### 2. [URDF-format](https://github.com/KroNton/beetlebot/tree/urdf-format)
 
 In this branch beetlebot robot is writen as URDF  and spawnd inside the main world using `spawner cmd` in the launch file.
 
