@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='ASCII'?>
+<sdf version='1.7'>
+  <world name='beetlebot_world'>
+    <physics name='1ms' type='ignored'>
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+
+        <plugin
+            filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics">
+        </plugin>
+
+        <plugin
+            filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands">
+        </plugin>
+
+        <plugin
+            filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster">
+        </plugin>
+
+
+        <!--  movment plugins to control robot using gzsim teleop with keyboard (No ROS) -->
+
+    <!-- Moving Forward-->
+    <plugin filename="gz-sim-triggered-publisher-system"
+            name="gz::sim::systems::TriggeredPublisher">
+        <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+            <match field="data">16777235</match>
+        </input>
+        <output type="gz.msgs.Twist" topic="/cmd_vel">
+            linear: {x: 0.5}, angular: {z: 0.0}
+        </output>
+    </plugin>
+
+    <!-- Moving Backward-->
+    <plugin filename="gz-sim-triggered-publisher-system"
+            name="gz::sim::systems::TriggeredPublisher">
+        <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+            <match field="data">16777237</match>
+        </input>
+        <output type="gz.msgs.Twist" topic="/cmd_vel">
+            linear: {x: -0.5}, angular: {z: 0.0}
+        </output>
+    </plugin>
+
+    <!-- Moving Right-->
+    <plugin filename="gz-sim-triggered-publisher-system"
+            name="gz::sim::systems::TriggeredPublisher">
+        <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+            <match field="data">16777236</match>
+        </input>
+        <output type="gz.msgs.Twist" topic="/cmd_vel">
+            linear: {x: 0.0}, angular: {z: -0.5}
+        </output>
+    </plugin>
+
+    <!-- Moving Left-->
+    <plugin filename="gz-sim-triggered-publisher-system"
+            name="gz::sim::systems::TriggeredPublisher">
+        <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+            <match field="data">16777234</match>
+        </input>
+        <output type="gz.msgs.Twist" topic="/cmd_vel">
+            linear: {x: 0.0}, angular: {z: 0.5}
+        </output>
+    </plugin>   
+
+    <!-- Stop the robot-->
+    <plugin filename="gz-sim-triggered-publisher-system"
+            name="gz::sim::systems::TriggeredPublisher">
+        <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+            <match field="data">75</match>
+        </input>
+        <output type="gz.msgs.Twist" topic="/cmd_vel">
+            linear: {x: 0.0}, angular: {z: 0.0}
+        </output>
+    </plugin>
+
+    <scene>
+      <ambient>1 1 1 1</ambient>
+      <background>0.3 0.7 0.9 1</background>
+      <shadows>0</shadows>
+      <grid>1</grid>
+    </scene>
+    <light type="directional" name="sun">
+        <cast_shadows>true</cast_shadows>
+        <pose>0 0 10 0 0 0</pose>
+        <diffuse>0.8 0.8 0.8 1</diffuse>
+        <specular>0.2 0.2 0.2 1</specular>
+        <attenuation>
+            <range>1000</range>
+            <constant>0.9</constant>
+            <linear>0.01</linear>
+            <quadratic>0.001</quadratic>
+        </attenuation>
+        <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+        <static>true</static>
+        <link name="link">
+            <collision name="collision">
+                <geometry>
+                    <plane>
+                        <normal>0 0 1</normal>
+                        <size>100 100</size>
+                    </plane>
+                </geometry>
+                <surface>
+                    <friction>
+                        <ode>
+                            <mu>100</mu>
+                            <mu2>50</mu2>
+                        </ode>
+                    </friction>
+                </surface>
+            </collision>
+            <visual name="visual">
+                <cast_shadows>false</cast_shadows>
+                <geometry>
+                    <plane>
+                        <normal>0 0 1</normal>
+                        <size>100 100</size>
+                    </plane>
+                </geometry>
+                <material>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+    </model>
+
+    <include>
+        <pose>0 0 0.00 0.0 0.0 0.0</pose>
+        <uri>package://beetlebot_gazebo/models/house/model.sdf</uri>
+    </include>
+
+
+  </world>
+</sdf>
