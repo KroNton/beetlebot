@@ -113,6 +113,35 @@
         </sensor>
     </gazebo>
 
+    <!-- Depth Camera Plugin -->
+    <gazebo reference="camera">
+        <sensor name="depth" type="depth_camera">
+            <update_rate>5</update_rate>
+            <visualize>true</visualize>
+            <always_on>true</always_on>
+            <camera_info_topic>camera/depth/camera_info</camera_info_topic>
+            <gz_frame_id>beetlebot/camera</gz_frame_id>
+            <topic>/camera/depth</topic>
+            <pose>0.0089610933050383902 -0.0010701515703293301 1.2157785176357399 0 0 0</pose>
+            <camera>
+                <horizontal_fov>1.48702</horizontal_fov>
+                <image>
+                    <width>1280</width>
+                    <height>720</height>
+                    <format>R_FLOAT32</format>
+                </image>
+                <clip>
+                    <near>0.1</near>
+                    <far>100</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0</mean>
+                    <stddev>0.1</stddev>
+                </noise>
+            </camera>
+        </sensor>
+    </gazebo>
 
     <gazebo>         
         <plugin filename="gz-sim-imu-system"
