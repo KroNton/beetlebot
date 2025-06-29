@@ -179,7 +179,7 @@
         ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1DiffDrive.html -->
 
 
-        <plugin filename="gz-sim-diff-drive-system"
+        <!-- <plugin filename="gz-sim-diff-drive-system"
                 name="gz::sim::systems::DiffDrive">
                 <left_joint>base_link_to_wheel_left</left_joint>
                 <right_joint>base_link_to_wheel_right</right_joint>
@@ -197,33 +197,32 @@
                 <topic>cmd_vel</topic>
                 <publish_wheel_tf>false</publish_wheel_tf>
                 
-                <!-- <odom_topic>odom</odom_topic> -->
-                <!-- <frame_id>beetlebot/odom</frame_id> -->
-                <!-- <tf_topic>/tf</tf_topic> -->
-                <!-- <odom_topic>odom</odom_topic> -->
-                <!-- <frame_id>odom</frame_id>  -->
-                <!-- <child_frame_id>beetlebot</child_frame_id>  -->
-        </plugin>
+        </plugin> -->
 
         
         <!--  add OdometryPublisher plugin to publish odometry instedad of diff-drive plugin 
         ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1OdometryPublisher.html -->
 
 
-        <plugin filename="gz-sim-odometry-publisher-system"
+        <!-- <plugin filename="gz-sim-odometry-publisher-system"
             name="gz::sim::systems::OdometryPublisher">
             <odom_topic>odom</odom_topic>
             <odom_covariance_topic>odom_covariance</odom_covariance_topic>
             <xyz_offset>0 0 0</xyz_offset>
             <odom_frame>beetlebot/odom</odom_frame>
             <robot_base_frame>beetlebot</robot_base_frame>
+        </plugin> -->
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+             <parameters>$(find beetlebot_controller)/config/beetlebot_controller.yaml</parameters>
         </plugin>
-
-
+        
 
         <!-- add PosePublisher plugin to publish pose of the robot
         ref: https://gazebosim.org/api/sim/8/classgz_1_1sim_1_1systems_1_1PosePublisher.html -->
 
+
+        <!--  add GAZEBO ros2 control plugin to control robot joints and return feedback using ros2_control 
+        ref: https://control.ros.org/jazzy/doc/gz_ros2_control/doc/index.html -->
         <plugin filename="gz-sim-pose-publisher-system"
             name="gz::sim::systems::PosePublisher">
             <publish_link_pose>true</publish_link_pose>
