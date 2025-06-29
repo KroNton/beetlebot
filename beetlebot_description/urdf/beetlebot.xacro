@@ -2,6 +2,7 @@
     <robot name="beetlebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
         <xacro:include filename="$(find beetlebot_description)/urdf/beetlebot.gazebo" />
+        <xacro:include filename="$(find beetlebot_description)/urdf/beetlebot_ros2_control.xacro" />
 
         <link name="beetlebot">
             <pose relative_to='__model__'>0 0 0.0 0 0 0</pose>
