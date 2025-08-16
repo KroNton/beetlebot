@@ -21,8 +21,17 @@ def generate_launch_description():
             "/controller_manager"
         ]
     )
+    wheel_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["beetlebot_diff_drive_controller", 
+                   "--controller-manager", 
+                   "/controller_manager"
+        ])
     
+
     return LaunchDescription([
         joint_state_broadcaster_spawner,
-        joint_velocity_controller
+        # joint_velocity_controller,
+        wheel_controller_spawner
     ])
