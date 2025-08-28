@@ -8,6 +8,7 @@ controller_manager:
 
     joint_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
+      
     beetlebot_diff_drive_controller:
       type: diff_drive_controller/DiffDriveController
 

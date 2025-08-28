@@ -26,8 +26,8 @@ def generate_launch_description():
         executable="spawner",
         arguments=["beetlebot_diff_drive_controller", 
                    "--controller-manager", 
-                   "/controller_manager"
-        ])
+                   "/controller_manager"]         
+                   )
     
 
     return LaunchDescription([
