@@ -149,10 +149,11 @@
         </plugin>
     </gazebo> 
 
-    <gazebo reference="imu">
+    <gazebo reference="imu_link">
         <sensor name="imu_sensor" type="imu">
             <always_on>1</always_on>
-            <update_rate>20</update_rate>
+            <gz_frame_id>beetlebot/imu_link</gz_frame_id>
+            <update_rate>100</update_rate>
             <visualize>true</visualize>
             <topic>imu</topic>
         </sensor>
