@@ -16,7 +16,7 @@ controller_manager:
 beetlebot_diff_drive_controller:
  ros__parameters:
     type        : diff_drive_controller/DiffDriveController
-    use_stamped_vel: true
+    use_stamped_vel: false
     left_wheel_names  : ['base_link_to_wheel_left']
     right_wheel_names : ['base_link_to_wheel_right']
 
@@ -24,8 +24,8 @@ beetlebot_diff_drive_controller:
     pose_covariance_diagonal : [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
     twist_covariance_diagonal: [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
 
-    wheel_separation : 0.17
-    wheel_radius : 0.033
+    wheel_separation : 0.67
+    wheel_radius : 0.15
 
     wheel_separation_multiplier: 1.0
     left_wheel_radius_multiplier: 1.0
@@ -35,8 +35,7 @@ beetlebot_diff_drive_controller:
     cmd_vel_timeout: 0.5
 
     # Base frame_id
-    base_frame_id: beetlebot #default: base_link
-
+    base_frame_id: beetlebot 
     # Publish limited velocity
     publish_limited_velocity: true
 
