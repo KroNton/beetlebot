@@ -98,6 +98,7 @@ def generate_launch_description():
        package='rviz2',
        executable='rviz2',
        arguments=['-d', os.path.join(pkg_project_gazebo, 'config', 'beetlebot.rviz')],
+       parameters=[{'use_sim_time': True}],
        condition=IfCondition(LaunchConfiguration('rviz'))
     )
 
@@ -108,7 +109,8 @@ def generate_launch_description():
         parameters=[{
             'config_file': os.path.join(pkg_project_gazebo, 'config', 'beetlebot_ros_bridge.yaml'),
             'qos_overrides./tf_static.publisher.durability': 'transient_local',
-        }],
+        },
+        {'use_sim_time': True}],
         output='screen'
     )
 
@@ -117,6 +119,7 @@ def generate_launch_description():
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
+        parameters=[{'use_sim_time': True}],
         output=['screen']
     )
 
