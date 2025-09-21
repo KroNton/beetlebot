@@ -215,7 +215,7 @@
             <odom_topic>odom</odom_topic>
             <odom_covariance_topic>odom_covariance</odom_covariance_topic>
             <xyz_offset>0 0 0</xyz_offset>
-            <odom_frame>beetlebot/odom</odom_frame>
+            <odom_frame>odom</odom_frame>
             <robot_base_frame>beetlebot</robot_base_frame>
         </plugin>
 
