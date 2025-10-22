@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>User</author>
+      <authoring_tool>Manual</authoring_tool>
+    </contributor>
+    <created>2025-09-20T00:00:00Z</created>
+    <modified>2025-09-20T00:00:00Z</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  
+  <!-- Library of images -->
+  <library_images>
+    <image id="aruco_marker_1_png" name="aruco_marker_1_png">
+      <init_from>aruco_marker_1.png</init_from>
+    </image>
+  </library_images>
+  
+  <!-- Library of effects -->
+  <library_effects>
+    <effect id="aruco_material_effect" name="aruco_material_effect">
+      <profile_COMMON>
+        <newparam sid="aruco_marker_1_png_surface">
+          <surface type="2D">
+            <init_from>aruco_marker_1_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="aruco_marker_1_png_sampler">
+          <sampler2D>
+            <source>aruco_marker_1_png_surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">1 1 1 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="aruco_marker_1_png_sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.1 0.1 0.1 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  
+  <!-- Library of materials -->
+  <library_materials>
+    <material id="aruco_material" name="aruco_material">
+      <instance_effect url="#aruco_material_effect"/>
+    </material>
+  </library_materials>
+  
+  <!-- Library of geometries -->
+  <library_geometries>
+    <geometry id="aruco_plane_geo" name="aruco_plane">
+      <mesh>
+        <source id="aruco_plane_positions">
+          <float_array id="aruco_plane_positions_array" count="12">
+            -0.075 -0.075 0
+             0.075 -0.075 0
+             0.075  0.075 0
+            -0.075  0.075 0
+          </float_array>
+          <technique_common>
+            <accessor source="#aruco_plane_positions_array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        
+        <source id="aruco_plane_normals">
+          <float_array id="aruco_plane_normals_array" count="12">
+            0 0 1
+            0 0 1
+            0 0 1
+            0 0 1
+          </float_array>
+          <technique_common>
+            <accessor source="#aruco_plane_normals_array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        
+        <source id="aruco_plane_uvs">
+          <float_array id="aruco_plane_uvs_array" count="8">
+            0 0
+            1 0
+            1 1
+            0 1
+          </float_array>
+          <technique_common>
+            <accessor source="#aruco_plane_uvs_array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        
+        <vertices id="aruco_plane_vertices">
+          <input semantic="POSITION" source="#aruco_plane_positions"/>
+        </vertices>
+        
+        <triangles material="aruco_material" count="2">
+          <input semantic="VERTEX" source="#aruco_plane_vertices" offset="0"/>
+          <input semantic="NORMAL" source="#aruco_plane_normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#aruco_plane_uvs" offset="2" set="0"/>
+          <p>
+            0 0 0  1 1 1  2 2 2
+            0 0 0  2 2 2  3 3 3
+          </p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  
+  <!-- Library of visual scenes -->
+  <library_visual_scenes>
+    <visual_scene id="aruco_scene" name="aruco_scene">
+      <node id="aruco_marker_node" name="aruco_marker_node" type="NODE">
+        <matrix sid="transform">
+          1 0 0 0
+          0 1 0 0
+          0 0 1 0
+          0 0 0 1
+        </matrix>
+        <instance_geometry url="#aruco_plane_geo" name="aruco_marker_instance">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="aruco_material" target="#aruco_material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  
+  <scene>
+    <instance_visual_scene url="#aruco_scene"/>
+  </scene>
+</COLLADA>
