@@ -78,7 +78,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('rviz', default_value='true',
                               description='Open RViz.'),
-        joint_state_publisher,
+        # joint_state_publisher,
         robot_state_publisher_node,
         rviz
     ])
