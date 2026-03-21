@@ -112,14 +112,6 @@ def generate_launch_description():
         output='screen'
     )
 
-        # For publishing and controlling the robot pose, we need joint states of the robot
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        output=['screen']
-    )
-
     return LaunchDescription([
 
         declare_spawn_x,
@@ -127,7 +119,6 @@ def generate_launch_description():
         declare_spawn_z,
         gz_spawn_entity,
         gz_sim,
-        joint_state_publisher,
         DeclareLaunchArgument('rviz', default_value='true', description='Open RViz.'),
         bridge,
         robot_state_publisher,
